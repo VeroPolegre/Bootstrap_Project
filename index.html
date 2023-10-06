@@ -2,13 +2,11 @@
 <html lang="en">
   <head>
     <title>Proyecto Bootstrap</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -73,8 +71,9 @@
       <div class="register-photo">
         <div class="form-container">
           <div class="image-holder"></div>
-          <form id="myForm" method="post">
+          <form>
             <h2 class="text-center"><strong>Create</strong> an account.</h2>
+            <p id="msg1"></p>
             <div class="form-group">
               <input
                 class="form-control"
@@ -99,6 +98,7 @@
                 type="password"
                 name="password"
                 placeholder="Password"
+                id="password1"
               />
             </div>
             <div class="form-group">
@@ -107,9 +107,11 @@
                 type="password"
                 name="password-repeat"
                 placeholder="Password (repeat)"
+                id="password2"
               />
             </div>
             <div class="form-group">
+              <p id="msg2"></p>
               <div class="form-check">
                 <label class="form-check-label"
                   ><input class="form-check-input" type="checkbox" />I agree to
@@ -118,11 +120,11 @@
               </div>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary btn-block" type="submit">
+              <button class="btn btn-primary btn-block" type="button" id="btn">
                 Sign Up
               </button>
             </div>
-            <a href="#" class="already"
+            <a href="" class="already"
               >You already have an account? Login here.</a
             >
           </form>
