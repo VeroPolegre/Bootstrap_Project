@@ -9,7 +9,7 @@ const msg2 = document.getElementById("msg2");
 const btn = document.getElementById("btn");
 
 let allUsers = JSON.parse(localStorage.getItem("allUsers")) || [];
-function saveContacts(e) {
+function saveUsers(e) {
   e.preventDefault();
   const user = {
     name: userName.value,
@@ -21,7 +21,7 @@ function saveContacts(e) {
   localStorage.setItem("allUsers", JSON.stringify(allUsers));
   console.log(allUsers);
 }
-saveContacts();
+saveUsers();
 
 // function validation1(e) {
 //   e.preventDefault();
@@ -54,4 +54,4 @@ saveContacts();
 //   }, 3000);
 // }
 
-btn.addEventListener("click", saveContacts);
+btn.addEventListener("click", saveUsers);
