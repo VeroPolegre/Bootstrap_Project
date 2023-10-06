@@ -2,24 +2,24 @@ const userName = document.getElementById("userName");
 const email = document.getElementById("email");
 const password1 = document.getElementById("password1");
 const password2 = document.getElementById("password2");
-
 const msg1 = document.getElementById("msg1");
 const msg2 = document.getElementById("msg2");
-
 const btn = document.getElementById("btn");
 
+const people = JSON.parse(localStorage.getItem("people")) || [];
 function saveUsers() {
   const user = {
-    name: userName.value,
+    userName: userName.value,
     email: email.value,
     password1: password1.value,
     password2: password2.value,
   };
-  localStorage.setItem("user", JSON.stringify(user));
+
+  people.push(user);
+  localStorage.setItem("people", JSON.stringify(people));
 }
 
-function validation1(e) {
-  e.preventDefault();
+function userValidation() {
   const reEmail = /(\w+?@\w+?\x2E.+)/;
   if (
     userName.value == "" ||
@@ -27,28 +27,33 @@ function validation1(e) {
     password1.value == "" ||
     password2.value == ""
   ) {
-    msg1.innerText = "Rellena todos los campos";
+    msg1.innerText = "Please, fields must be completed";
   } else if (reEmail.test(email.value) !== true) {
-    msg1.innerText =
-      "Por favor inserte un correo correcto que contenga almenos un @";
+    msg1.innerText = "Please, your email must contain a @";
   } else {
-    msg1.innerText = `User created succesfully, ${userName.value} ${email.value} `;
+    msg1.innerText = "User created succesfully!!";
   }
   setTimeout(() => {
     msg1.innerText = "";
   }, 3000);
 }
 
-function validation2(e) {
-  e.preventDefault();
-  if (password1 !== password2) {
-    msg2.innerHTML = "Please repeat the same password";
+function passwordValidation() {
+  if (password1.value != password2.value) {
+    msg2.innerHTML = "Please, repeat the same password";
   } else {
-    msg2.innerHTML = "User created succesfully!";
+    msg2.innerHTML = "";
   }
   setTimeout(() => {
     msg2.innerText = "";
   }, 3000);
 }
 
-btn.addEventListener("click", saveUsers);
+function createUser(e) {
+  e.preventDefault();
+  saveUsers();
+  userValidation();
+  passwordValidation();
+}
+
+btn.addEventListener("click", createUser);
