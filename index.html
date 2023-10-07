@@ -45,7 +45,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="users.html">Users</a>
+              <a class="nav-link" href="./users/users.html">Users</a>
             </li>
           </ul>
         </div>
@@ -113,9 +113,19 @@
               />
             </div>
             <div class="form-group">
-              <div id="myAlert" class="alert alert-danger" role="alert">
-                <p id="userValidationAlert"></p>
-                <p id="passwordValidationAlert"></p>
+              <div
+                id="validationAlert"
+                class="alert alert-danger hidden"
+                role="alert"
+              >
+                <span id="validationAlertMessage"></span>
+              </div>
+              <div
+                id="userValidationSuccessAlert"
+                class="alert alert-success hidden"
+                role="alert"
+              >
+                <span>User created successfully!!</span>
               </div>
 
               <div class="form-check">
@@ -126,7 +136,11 @@
               </div>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary btn-block" type="button" id="btn">
+              <button
+                class="btn btn-primary btn-block"
+                type="button"
+                id="sign-up-button"
+              >
                 Sign Up
               </button>
             </div>
