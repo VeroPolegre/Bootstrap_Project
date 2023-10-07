@@ -20,6 +20,11 @@ function saveUsers() {
   people.push(user);
   localStorage.setItem("people", JSON.stringify(people));
 }
+const user2 = JSON.parse(localStorage.getItem("user")) || [];
+function usersPrinted() {
+  user.push(user2);
+  localStorage.setItem("user", JSON.stringify(user));
+}
 
 function userValidation() {
   const reEmail = /(\w+?@\w+?\x2E.+)/;
