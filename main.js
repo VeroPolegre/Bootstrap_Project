@@ -6,6 +6,7 @@ const msg1 = document.getElementById("msg1");
 const msg2 = document.getElementById("msg2");
 const btn = document.getElementById("btn");
 
+
 const people = JSON.parse(localStorage.getItem("people")) || [];
 function saveUsers() {
   const user = {
@@ -27,9 +28,9 @@ function userValidation() {
     password1.value == "" ||
     password2.value == ""
   ) {
-    msg1.innerText = "Please, fields must be completed";
+    msg1.innerText = "Please, all the fields must be completed";
   } else if (reEmail.test(email.value) !== true) {
-    msg1.innerText = "Please, your email must contain a @";
+    msg1.innerText = "Please, enter a valid email";
   } else {
     msg1.innerText = "User created succesfully!!";
   }
