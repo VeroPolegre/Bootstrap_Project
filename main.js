@@ -1,19 +1,20 @@
 const userName = document.getElementById("userName");
 const email = document.getElementById("email");
-const password1 = document.getElementById("password1");
-const password2 = document.getElementById("password2");
-const msg1 = document.getElementById("msg1");
-const msg2 = document.getElementById("msg2");
+const password = document.getElementById("password");
+const passwordRepeat = document.getElementById("passwordRepeat");
+const userValidationAlert = document.getElementById("userValidationAlert");
+const passwordValidationAlert = document.getElementById(
+  "passwordValidationAlert"
+);
 const btn = document.getElementById("btn");
-
 
 const people = JSON.parse(localStorage.getItem("people")) || [];
 function saveUsers() {
   const user = {
     userName: userName.value,
     email: email.value,
-    password1: password1.value,
-    password2: password2.value,
+    password: password.value,
+    passwordRepeat: passwordRepeat.value,
   };
 
   people.push(user);
@@ -22,39 +23,48 @@ function saveUsers() {
 
 function userValidation() {
   const reEmail = /(\w+?@\w+?\x2E.+)/;
+  setTimeout(() => {
+    userValidationAlert.innerText = "";
+  }, 3000);
   if (
     userName.value == "" ||
     email.value == "" ||
-    password1.value == "" ||
-    password2.value == ""
+    password.value == "" ||
+    passwordRepeat.value == ""
   ) {
-    msg1.innerText = "Please, all the fields must be completed";
+    userValidationAlert.innerText = "Please, all the fields must be completed";
+    return false;
   } else if (reEmail.test(email.value) !== true) {
-    msg1.innerText = "Please, enter a valid email";
+    userValidationAlert.innerText = "Please, enter a valid email";
+    return false;
   } else {
-    msg1.innerText = "User created succesfully!!";
+    userValidationAlert.innerText = "";
+    return true;
   }
-  setTimeout(() => {
-    msg1.innerText = "";
-  }, 3000);
 }
 
 function passwordValidation() {
-  if (password1.value != password2.value) {
-    msg2.innerHTML = "Please, repeat the same password";
-  } else {
-    msg2.innerHTML = "";
-  }
   setTimeout(() => {
-    msg2.innerText = "";
+    passwordValidationAlert.innerText = "";
   }, 3000);
+  if (password.value !== passwordRepeat.value) {
+    passwordValidationAlert.innerHTML = "Please, repeat the same password";
+    return false;
+  } else {
+    passwordValidationAlert.innerHTML = "";
+    return true;
+  }
 }
 
 function createUser(e) {
   e.preventDefault();
-  saveUsers();
-  userValidation();
-  passwordValidation();
-}
 
+  const isUserValid = userValidation();
+  const isPasswordValid = passwordValidation();
+
+  if (isUserValid && isPasswordValid) {
+    saveUsers();
+    userValidationAlert.innerText = "User created successfully!!";
+  }
+}
 btn.addEventListener("click", createUser);
