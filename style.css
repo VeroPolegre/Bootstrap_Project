@@ -203,3 +203,9 @@ h1 a {
 .hidden {
   display: none;
 }
+
+.card {
+  align-items: center;
+  text-align: center;
+  padding: 2em;
+}

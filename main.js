@@ -1,17 +1,17 @@
-const userName = document.getElementById("userName");
+const userName = document.getElementById("user-name");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
-const passwordRepeat = document.getElementById("passwordRepeat");
-const validationAlert = document.getElementById("validationAlert");
+const passwordRepeat = document.getElementById("password-repeat");
+const validationAlert = document.getElementById("validation-alert");
 const validationAlertMessage = document.getElementById(
-  "validationAlertMessage"
+  "validation-alert-message"
 );
 const userValidationSuccessAlert = document.getElementById(
-  "userValidationSuccessAlert"
+  "user-validation-success-alert"
 );
 const signUpButton = document.getElementById("sign-up-button");
 
-const people = JSON.parse(localStorage.getItem("people")) || [];
+const users = JSON.parse(localStorage.getItem("users")) || [];
 function saveUsers() {
   const user = {
     userName: userName.value,
@@ -20,13 +20,8 @@ function saveUsers() {
     passwordRepeat: passwordRepeat.value,
   };
 
-  people.push(user);
-  localStorage.setItem("people", JSON.stringify(people));
-}
-const user2 = JSON.parse(localStorage.getItem("user")) || [];
-function usersPrinted() {
-  user.push(user2);
-  localStorage.setItem("user", JSON.stringify(user));
+  users.push(user);
+  localStorage.setItem("users", JSON.stringify(users));
 }
 
 function userValidation() {
