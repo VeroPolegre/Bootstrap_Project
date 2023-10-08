@@ -71,6 +71,9 @@ function createUser(e) {
       userValidationSuccessAlert.classList.add("hidden");
     }, 3000);
     saveUsers();
+    setTimeout(() => {
+      window.location.replace("./users/users.html");
+    }, 3000);
   }
 }
 signUpButton.addEventListener("click", createUser);
