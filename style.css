@@ -209,3 +209,20 @@ h1 a {
   text-align: center;
   padding: 2em;
 }
+
+#intro {
+  text-align: center;
+}
+.infoContainer {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  flex-grow: 1;
+  text-align: justify;
+  width: 187vh;
+}
+img {
+  margin-bottom: 20px;
+  align-items: center;
+  height: 30%;
+  width: 40%;
+}
